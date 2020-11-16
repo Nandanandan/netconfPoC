@@ -28,7 +28,6 @@ class ncfrpc:
             print(f"Exception occured as {e}")
 
     def get_version(self):
-        # Inprogress
         filter = '<get-software-information></get-software-information>'
         try:
             with nc.connect(host=self.host, username=self.uname, password=self.passwd, port=self.nport, hostkey_verify=False, device_params={'name':'junos'}) as jp:
@@ -36,6 +35,6 @@ class ncfrpc:
                 sv = data.xpath('software-information/junos-version')
                 netElm = data.xpath('software-information/host-name')
                 for data1, data2 in zip(sv, netElm):
-                    print(f"Device: {data2.text}, Software Version: {data1.text}")
+                    print(f"\n\nDevice: {data2.text}, Software Version: {data1.text}\n\n")
         except Exception as e:
             print(f"Exception occured as {e}")
